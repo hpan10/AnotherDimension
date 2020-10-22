@@ -34,4 +34,13 @@ public class ArrayOps{
     }
     return largestArray;
   }
+
+
+  public static int sum(int[][] matrix){
+    int sum = 0;
+    for (int row = 0; row < matrix.length; row++){
+      sum += sum(matrix[row]);
+    }
+    return sum;
+  }
 }
