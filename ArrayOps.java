@@ -45,14 +45,20 @@ public class ArrayOps{
   }
 
 
+  //Finds the sum of a specified column
+  public static int sumCol(int[][] matrix, int col){
+    int sum = 0;
+    for (int row = 0; row < matrix.length; row++){
+      sum += matrix[row][col];
+    }
+    return sum;
+  }
+
+
   public static int[] sumCols(int[][] matrix){
     int[] sumCols = new int[matrix[0].length];
     for (int startCol = 0; startCol < matrix[0].length; startCol++){
-      int sum = 0;
-      for (int startRow = 0; startRow < matrix.length; startRow++){
-        sum += matrix[startRow][startCol];
-      }
-      sumCols[startCol] = sum;
+      sumCols[startCol] = sumCol(matrix,startCol);
     }
     return sumCols;
   }
@@ -75,5 +81,10 @@ public class ArrayOps{
       if (sums[start] != sumCheck) return false;
     }
     return true;
+  }
+
+
+  public static boolean isLocationMagic(int[][] matrix, int row, int col){
+    return sum(matrix[row]) == sumCol(matrix, col);
   }
 }
